@@ -1,0 +1,18 @@
+def generate_number_list(last_number: int = 21) -> list[int]:
+    """Question 1
+        Return a sequence of numbers, starting at 3, up to (and including, if appropriate), the argument last_number
+        
+        Example use: generate_number_list()
+        Example output: 3 6 9 12 15 18 21
+        Example use: generate_number_list(25)
+        Example output: 3 6 9 12 15 18 21 24
+    """
+    # Enter the last number you want to generate a list up to
+    
+    last_number = input("Enter a number: ")
+    last_number = int(last_number) + 1
+    numbers = []
+    for i in range(3, last_number, 3):
+        numbers.append(i)
+
+        return numbers

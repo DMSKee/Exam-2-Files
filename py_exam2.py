@@ -1,5 +1,6 @@
 from collections.abc import Sequence
 from typing import Tuple
+
 def generate_number_list(last_number: int = 21) -> Sequence:
     """Question 1
         Return a sequence of numbers, starting at 3, up to (and including, if appropriate), the argument last_number
@@ -13,12 +14,15 @@ def generate_number_list(last_number: int = 21) -> Sequence:
     
     last_number = input("Enter a number: ")
     last_number = int(last_number) + 1
-
+    numbers = []
     for i in range(3, last_number, 3):
-        return(i)
+        numbers.append(i)
+        return numbers
 
 
-def lex_sort_file(filename: str = "multi_seqs.txt") -> Sequence::
+
+
+def lex_sort_file(filename: str = "multi_seqs.txt") -> Sequence:
     """Question 2
         The file with the filename given as an argument contains several amino-acid sequences, one per line.
         Write a function that returns lines in a sequence, sorted in lexicographical order.
