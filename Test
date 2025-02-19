@@ -1,0 +1,27 @@
+from collections.abc import Sequence
+from typing import Tuple, Sequence, List
+
+def top_lysine_stats(filename: str = "multi_seqs.txt") -> Tuple[float, str]:
+    """Question 3
+        Work out which sequence from file `multi_seqs.txt` has the highest percentage of lysine (`K`) residues,
+        and return out both the percentage and the sequence.
+
+        Example use: top_lysine_stats()
+        Example output:  17.86, AEKTAVTKVVVAADKAKEQELKSRTKEVITTKQEQMHVTHEQIRKETEKTFVPKVV
+
+    """
+    # Complete the function body below to answer question 3
+    with open(filename) as f:
+        lines = f.readlines()
+        lines = [line.strip() for line in lines]
+        lysine_percentages = []
+        for line in lines:
+            lysine_count = line.count("K")
+            lysine_percent = lysine_count / len(line) * 100
+            lysine_percentages.append(lysine_percent)
+        max_percent = max(lysine_percentages)
+        sequence = lines[lysine_percentages.index(max_percent)]
+
+    return max_percent, sequence
+      
+print(top_lysine_stats("/Users/Student/Documents/Birkbeck/Biocomputing/Exam 2 Files/data/multi_seqs.txt"))

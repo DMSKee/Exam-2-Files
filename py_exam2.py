@@ -44,8 +44,19 @@ def top_lysine_stats(filename: str = "multi_seqs.txt") -> Tuple[float, str]:
 
     """
     # Complete the function body below to answer question 3
-    
-    return 
+    with open(filename) as f:
+        lines = f.readlines()
+        lines = [line.strip() for line in lines]
+        lysine_percentages = []
+        for line in lines:
+            lysine_count = line.count("K")
+            lysine_percent = lysine_count / len(line) * 100
+            lysine_percentages.append(lysine_percent)
+        max_percent = max(lysine_percentages)
+        sequence = lines[lysine_percentages.index(max_percent)]
+
+        
+    return max_percent,  
 
 def avg_lysine_stats(filename="multi_seqs.txt") -> Tuple[float, float]:
     """Question 4
