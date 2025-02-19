@@ -31,7 +31,8 @@ def lex_sort_file(filename: str = "multi_seqs.txt") -> Sequence:
         lines = f.readlines()
         lines = [line.strip() for line in lines]
         lines.sort()
-    return lines
+    return "\n".join(lines)
+
 
 def top_lysine_stats(filename: str = "multi_seqs.txt") -> Tuple[float, str]:
     """Question 3
