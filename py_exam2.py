@@ -27,8 +27,7 @@ def lex_sort_file(filename: str = "multi_seqs.txt") -> Sequence:
          ...
     """
     # Complete the function body below to answer question 2
-    with open(filename
-              ) as f:
+    with open(filename) as f:
         lines = f.readlines()
         lines = [line.strip() for line in lines]
         lines.sort()
