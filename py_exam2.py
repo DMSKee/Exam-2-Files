@@ -9,7 +9,7 @@ def generate_number_list(last_number: int = 21) -> Sequence:
         Example use: generate_number_list(25)
         Example output: 3 6 9 12 15 18 21 24
     """
-    # Complete the function body below to answer question 1
+    # Enter the last number you want to generate a list up to
     
     last_number = input("Enter a number: ")
     last_number = int(last_number) + 1
