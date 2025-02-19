@@ -16,3 +16,5 @@ def generate_number_list(last_number: int = 21) -> list[int]:
         numbers.append(i)
 
         return numbers
+    
+    list(range(1, last_number + 1))

@@ -1,5 +1,5 @@
 from collections.abc import Sequence
-from typing import Tuple
+from typing import Tuple, Sequence, List
 
 def generate_number_list(last_number: int = 21) -> Sequence:
     """Question 1
@@ -10,17 +10,9 @@ def generate_number_list(last_number: int = 21) -> Sequence:
         Example use: generate_number_list(25)
         Example output: 3 6 9 12 15 18 21 24
     """
-
-    
     # Enter the last number you want to generate a list up to
-    
-    last_number = input("Enter a number: ")
-    last_number = int(last_number) + 1
-    numbers = []
-    for i in range(3, last_number, 3):
-        numbers.append(i)
-        return numbers
-
+    numbers = list(range(3, last_number+1, 3))
+    return numbers
 
 
 def lex_sort_file(filename: str = "multi_seqs.txt") -> Sequence:
