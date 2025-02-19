@@ -5,10 +5,8 @@ def generate_number_list(last_number: int = 21) -> Sequence:
     """Question 1
         Return a sequence of numbers, starting at 3, up to (and including, if appropriate), the argument last_number
         
-        Example use: generate_number_list()
-        Example output: 3 6 9 12 15 18 21
-        Example use: generate_number_list(25)
-        Example output: 3 6 9 12 15 18 21 24
+        Example use: generate_number_list(29)
+        Example output: [3, 6, 9, 12, 15, 18, 21, 24, 27]
     """
     # Enter the last number you want to generate a list up to
     numbers = list(range(3, last_number+1, 3))
@@ -29,8 +27,12 @@ def lex_sort_file(filename: str = "multi_seqs.txt") -> Sequence:
          ...
     """
     # Complete the function body below to answer question 2
-    
-    return
+    with open(filename
+              ) as f:
+        lines = f.readlines()
+        lines = [line.strip() for line in lines]
+        lines.sort()
+    return lines
 
 def top_lysine_stats(filename: str = "multi_seqs.txt") -> Tuple[float, str]:
     """Question 3
