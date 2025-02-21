@@ -2,8 +2,8 @@ from collections.abc import Sequence
 from typing import Tuple, Sequence, List
 
 def generate_number_list(last_number: int = 21) -> Sequence:
-    """Question 1
-        Return a sequence of numbers, starting at 3, up to (and including, if appropriate), the argument last_number
+    """
+        Returns a sequence of numbers, starting at 3, up to (and including, if appropriate), the argument last_number
         
         Example use: generate_number_list(29)
         Example output: [3, 6, 9, 12, 15, 18, 21, 24, 27]
@@ -14,9 +14,8 @@ def generate_number_list(last_number: int = 21) -> Sequence:
 
 
 def lex_sort_file(filename: str = "multi_seqs.txt") -> Sequence:
-    """Question 2
-        The file with the filename given as an argument contains several amino-acid sequences, one per line.
-        Write a function that returns lines in a sequence, sorted in lexicographical order.
+    """
+        Sorts the sequences in a file in lexicographical order and return them as a list.
 
         Example use: lex_sort_file()
         Example output:
@@ -26,15 +25,17 @@ def lex_sort_file(filename: str = "multi_seqs.txt") -> Sequence:
          'EGRKGLQRIEELERMAHEGALTGVTTDQKEKQKPDIVLYPEPVRVLEGETARF',
          ...
     """
-    # Complete the function body below to answer question 2
+    # Read the file line by line
     with open(filename) as f:
         lines = f.readlines()
+        # strip spaces and sort the lines lexicographically
         lines = [line.strip() for line in lines]
         lines.sort()
+
     return "\n".join(lines)
 
 
-def top_lysine_stats(filename: str = "multi_seqs.txt") -> Tuple[float, str]:
+def top_lysine_stats(filename: str = "multi_seqs.txt") -> tuple[float, str]:
     """Question 3
         Work out which sequence from file `multi_seqs.txt` has the highest percentage of lysine (`K`) residues,
         and return out both the percentage and the sequence.
@@ -43,16 +44,21 @@ def top_lysine_stats(filename: str = "multi_seqs.txt") -> Tuple[float, str]:
         Example output:  17.86, AEKTAVTKVVVAADKAKEQELKSRTKEVITTKQEQMHVTHEQIRKETEKTFVPKVV
 
     """
-    # Complete the function body below to answer question 3
+    # Open the file and read the lines and strip the spaces
     with open(filename) as f:
         lines = f.readlines()
         lines = [line.strip() for line in lines]
+
+        # Create a list to store the lysine percentages
         lysine_percentages = []
         for line in lines:
+            # Count the number of lysine residues (K) in each sequence (line)
             lysine_count = line.count("K")
+            # Calculate the percentage of lysine residues in each sequence
             lysine_percent = lysine_count / len(line) * 100
             lysine_percentages.append(lysine_percent)
         max_percent = max(lysine_percentages)
+        average_lysine_percent = sum(lysine_percentages) / len(lysine_percentages)
         sequence = lines[lysine_percentages.index(max_percent)]
 
     return max_percent, sequence
