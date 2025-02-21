@@ -177,10 +177,21 @@ So for this DNA sequence, the peptide sequence `GSMSV` should be returned.
             'GTA': 'V', 'GCA': 'A', 'GAA': 'E', 'GGA': 'G', 'GTG': 'V', 'GCG': 'A','GAG': 'E', 'GGG': 'G'}
     
 # Read the codons file and store the codons in a dictionary
+
     protein_sequence = []
     with open(dna_fname) as f:
         lines = f.readlines()
-        for i in range(0, len(lines),3):
+
+        # Need to search for the start codon
+        # Start dictionary
+        start_sites = []
+        for i in range(len(lines)):
+            if lines[i:i+3] == "ATG":
+                start_sites.append(i)
+        # start iterating through from the start site        
+        for start_site in start_sites:
+            protein_sequence = []
+            for i in range(start_site, len(lines), 3):
             codon = lines[i:i+3]
             aa = codon_table[codon]
             # check if it's a stop codon
