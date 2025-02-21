@@ -178,7 +178,7 @@ So for this DNA sequence, the peptide sequence `GSMSV` should be returned.
     
 # Read the codons file and store the codons in a dictionary
     protein_sequence = []
-    with open(filename) as f:
+    with open(codons_fname) as f:
         lines = f.readlines()
         for i in range(0, len(lines),3):
             codon = lines[i:i+3]
@@ -188,7 +188,7 @@ So for this DNA sequence, the peptide sequence `GSMSV` should be returned.
                 break    
             else:
                 protein_sequence.append(aa)
-
+    return protein_sequence
 
 
   
