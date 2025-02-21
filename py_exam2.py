@@ -191,7 +191,7 @@ So for this DNA sequence, the peptide sequence `GSMSV` should be returned.
         # start iterating through from the start site        
         for start_site in start_sites:
             protein_sequence = []
-            for i in range(start_site, len(lines), 3):
+        for i in range(start_site, len(lines), 3):
             codon = lines[i:i+3]
             aa = codon_table[codon]
             # check if it's a stop codon
