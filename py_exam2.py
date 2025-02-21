@@ -182,23 +182,27 @@ So for this DNA sequence, the peptide sequence `GSMSV` should be returned.
     with open(dna_fname) as f:
         lines = f.readlines()
 
-        # Need to search for the start codon
+    # Search for the start codon
         # Start dictionary
         start_sites = []
         for i in range(len(lines)):
             if lines[i:i+3] == "ATG":
                 start_sites.append(i)
-        # start iterating through from the start site        
+        # Start reading through from the start site        
         for start_site in start_sites:
             protein_sequence = []
         for i in range(start_site, len(lines), 3):
             codon = lines[i:i+3]
             aa = codon_table[codon]
-            # check if it's a stop codon
+            # Check if it's a stop codon and stop if so
             if aa == "*":
                 break    
             else:
-                protein_sequence.append(aa)
+                protein_sequence =+ aa
+
+        # Continue reading through to the next start codon ...
+
+
     return protein_sequence
 
 
