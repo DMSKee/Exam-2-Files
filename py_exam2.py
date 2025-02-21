@@ -80,7 +80,7 @@ def avg_lysine_stats(filename="multi_seqs.txt") -> Tuple[float, float]:
         Needed packages: numpy, statistics
     """
     # Complete the function body below to answer question 4
-"""
+
     with open(filename) as f:
         lines = f.readlines()
         lines = [line.strip() for line in lines]
@@ -101,7 +101,7 @@ def avg_lysine_stats(filename="multi_seqs.txt") -> Tuple[float, float]:
                 mean_lysine = 0
                 median_lysine = 0
 
-        return 0,0 """
+        return 0,0
         
   
 
