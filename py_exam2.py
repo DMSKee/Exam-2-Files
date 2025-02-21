@@ -57,11 +57,16 @@ def top_lysine_stats(filename: str = "multi_seqs.txt") -> tuple[float, str]:
             # Calculate the percentage of lysine residues in each sequence
             lysine_percent = lysine_count / len(line) * 100
             lysine_percentages.append(lysine_percent)
+
         max_percent = max(lysine_percentages)
+        
         average_lysine_percent = sum(lysine_percentages) / len(lysine_percentages)
         sequence = lines[lysine_percentages.index(max_percent)]
 
     return max_percent, sequence
+
+
+
 
 def avg_lysine_stats(filename="multi_seqs.txt") -> Tuple[float, float]:
     """Question 4
@@ -71,7 +76,19 @@ def avg_lysine_stats(filename="multi_seqs.txt") -> Tuple[float, float]:
         Example output:  (4.390243902439025, 4.0)
     """
     # Complete the function body below to answer question 4
-    
+    with open(filename) as f:
+        lines = f.readlines()
+        lines = [line.strip() for line in lines]
+
+        lysine_counts = []
+        for line in lines:
+            lysine_counts = line.count("K")
+            mean_lysine = sum(lysine_counts) / len(lysine_counts)
+            median_lysine = lysine_counts[len(lysine_counts) // 2]
+
+    return mean_lysine, median_lysine
+           
+  
     return
 
 def plot_lysine_stats(filename: str = "multi_seqs.txt") -> None:
