@@ -35,7 +35,7 @@ def lex_sort_file(filename: str = "multi_seqs.txt") -> Sequence:
         lines = [line.strip() for line in lines]
         lines.sort()
 
-    return "\n".join(lines)
+    return lines
 
 
 def top_lysine_stats(filename: str = "multi_seqs.txt") -> tuple[float, str]:
@@ -165,8 +165,32 @@ So for this DNA sequence, the peptide sequence `GSMSV` should be returned.
         Example output:  ['YTSRRSPSSVGF', ...]
     """
     # Complete the function body below to answer question 6
-
+    # Define the codons
+    codon = {'TTT': 'F', 'TCT': 'S', 'TAT': 'Y', 'TGT': 'C', 'TTC': 'F', 'TCC': 'S', 'TAC': 'Y', 'TGC': 'C', 'TTA': 'L',
+                 'TCA': 'S', 'TAA': '*', 'TGA': '*', 'TTG': 'L', 'TCG': 'S', 'TAG': '*', 'TGG': 'W', 'CTT': 'L',
+                 'CCT': 'P',
+                 'CAT': 'H', 'CGT': 'R', 'CTC': 'L', 'CCC': 'P', 'CAC': 'H', 'CGC': 'R', 'CTA': 'L', 'CCA': 'P',
+                 'CAA': 'Q',
+                 'CGA': 'R', 'CTG': 'L', 'CCG': 'P', 'CAG': 'Q', 'CGG': 'R', 'ATT': 'I', 'ACT': 'T', 'AAT': 'N',
+                 'AGT': 'S',
+                 'ATC': 'I', 'ACC': 'T', 'AAC': 'N', 'AGC': 'S', 'ATA': 'I', 'ACA': 'T', 'AAA': 'K', 'AGA': 'R',
+                 'ATG': 'M',
+                 'ACG': 'T', 'AAG': 'K', 'AGG': 'R', 'GTT': 'V', 'GCT': 'A', 'GAT': 'D', 'GGT': 'G', 'GTC': 'V',
+                 'GCC': 'A',
+                 'GAC': 'D', 'GGC': 'G', 'GTA': 'V', 'GCA': 'A', 'GAA': 'E', 'GGA': 'G', 'GTG': 'V', 'GCG': 'A',
+                 'GAG': 'E',
+                 'GGG': 'G'}
     # Read the codons file and store the codons in a dictionary
+    startcodon = 0
+    length = len(sequence)
+    startcodon = sequence.find('ATG', startcodon)
+    codon_list = [sequence[i:i+3] for i in range(startcodon+3, length-3, 3)]
+
+  
+
+
+
+"""
     with open(codons_fname) as f:
         lines = f.readlines()
         lines = [line.strip() for line in lines]
@@ -184,10 +208,11 @@ So for this DNA sequence, the peptide sequence `GSMSV` should be returned.
     protein_sequences = []
     # Iterate through the DNA sequence, finding the start codon
 
-    
+    """
 
 
-    return
+
+  
 
 def longest_translatable_sequence(codons_fname: str = '../data/codons.txt', dna_fname: str = '../data/dna.txt') -> int:
     """Question 7
