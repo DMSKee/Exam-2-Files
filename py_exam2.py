@@ -72,7 +72,7 @@ def top_lysine_stats(filename: str = "multi_seqs.txt") -> tuple[float, str]:
 
 def avg_lysine_stats(filename="multi_seqs.txt") -> Tuple[float, float]:
     """
-        Compute the mean and median number of lysines in sequences in `multi_seqs.txt`, and return them
+        Calculate and return the mean and median number of lysines in sequences in a file.
 
         Example use: avg_lysine_stats()
         Example output:  (4.390243902439025, 4.0)
@@ -97,6 +97,7 @@ def avg_lysine_stats(filename="multi_seqs.txt") -> Tuple[float, float]:
                 lysine_counts.sort()
                 median_lysine = median(lysine_counts)
                 return median_lysine, mean_lysine  
+            # If there are no lysine counts, return 0
             else:
                 mean_lysine = 0
                 median_lysine = 0
@@ -111,8 +112,7 @@ def plot_lysine_stats(filename: str = "multi_seqs.txt") -> None:
 
         Example use: plot_lysine_stats()
         Example output:  <plot of the lysine count distribution>
-        Required packages, matplotlib.pyplot, seaborn, pandas
-       
+        
     """
     # Complete the function body below to answer question 5
     with open(filename) as f:
@@ -165,7 +165,28 @@ So for this DNA sequence, the peptide sequence `GSMSV` should be returned.
         Example output:  ['YTSRRSPSSVGF', ...]
     """
     # Complete the function body below to answer question 6
+
+    # Read the codons file and store the codons in a dictionary
+    with open(codons_fname) as f:
+        lines = f.readlines()
+        lines = [line.strip() for line in lines]
+        codons = {}
+        for line in lines:
+            codon, aa = line.split()
+            codons[codon] = aa
+    # Define start and stop codons
+    start_codon = 'ATG'
+    stop_codons = ['TAA', 'TAG', 'TGA']
+    # Read the DNA file and store the DNA sequence
+    with open(dna_fname) as f:
+        dna = f.read().strip()
+    # Create a list to store the protein sequences
+    protein_sequences = []
+    # Iterate through the DNA sequence, finding the start codon
+
     
+
+
     return
 
 def longest_translatable_sequence(codons_fname: str = '../data/codons.txt', dna_fname: str = '../data/dna.txt') -> int:
