@@ -93,16 +93,17 @@ def avg_lysine_stats(filename="multi_seqs.txt") -> Tuple[float, float]:
             # Add the counts to the list
             lysine_counts.append(lysine_count)
             # Calculate the mean lysine count
-            if lines:
+            if lysine_counts:
                 mean_lysine = sum(lysine_counts) / len(lysine_counts)
                 # Calculate the median lysine count 
                 lysine_counts.sort()
                 median_lysine = median(lysine_counts)
+                return median_lysine, mean_lysine  
             else:
                 mean_lysine = 0
                 median_lysine = 0
 
-        return median_lysine, mean_lysine    
+        return 0,0
         
   
 
