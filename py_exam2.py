@@ -71,11 +71,13 @@ import numpy as np
 from statistics import median
 
 def avg_lysine_stats(filename="multi_seqs.txt") -> Tuple[float, float]:
-    """Question 4
+    """
         Compute the mean and median number of lysines in sequences in `multi_seqs.txt`, and return them
 
         Example use: avg_lysine_stats()
         Example output:  (4.390243902439025, 4.0)
+
+        Needed packages: numpy, statistics
     """
     # Complete the function body below to answer question 4
 
@@ -100,10 +102,10 @@ def avg_lysine_stats(filename="multi_seqs.txt") -> Tuple[float, float]:
 
         return median_lysine, mean_lysine    
         
-           
   
-  
-
+import matplotlib.pyplot as py
+import seaborn as sb
+import pandas as pd
 def plot_lysine_stats(filename: str = "multi_seqs.txt") -> None:
     """Question 5
         Wrte a function that plot the distribution of lysine counts, in the sequences from file `multi_seqs.txt`.
@@ -112,8 +114,25 @@ def plot_lysine_stats(filename: str = "multi_seqs.txt") -> None:
         Example output:  <plot of the lysine count distribution>
     """
     # Complete the function body below to answer question 5
+    with open(filename) as f:
+        lines = f.readlines()
+        lines = [line.strip() for line in lines]
+        # Create a list for lysine counts
+        lysine_counts = []
+        for line in lines:
+            lysine_count = line.count("K")
+            # Add the counts to the list
+            lysine_counts.append(lysine_count)
+        # Create a dataframe
+        df = pd.DataFrame(lysine_counts, columns=["Lysine Count"])
     
-    return
+        # Plot the distribution of lysine counts
+        
+        sb.histplot(df, x="Lysine Count", bins=20)
+        py.xlabel("Lysine Count")
+        py.ylabel("Frequency")
+        py.title("Distribution of Lysine Counts")
+    return py.show()
 
 def translate_dna(codons_fname: str = '../data/codons.txt', dna_fname: str = '../data/dna.txt') -> Sequence[str]:
     """Question 6
