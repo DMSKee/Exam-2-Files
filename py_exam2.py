@@ -1,5 +1,10 @@
 from collections.abc import Sequence
 from typing import Tuple, Sequence, List
+import numpy as np
+from statistics import median
+import matplotlib.pyplot as py
+import seaborn as sb
+import pandas as pd
 
 def generate_number_list(last_number: int = 21) -> Sequence:
     """
@@ -67,9 +72,6 @@ def top_lysine_stats(filename: str = "multi_seqs.txt") -> tuple[float, str]:
     return max_percent, sequence
 
 
-import numpy as np
-from statistics import median
-
 def avg_lysine_stats(filename="multi_seqs.txt") -> Tuple[float, float]:
     """
         Compute the mean and median number of lysines in sequences in `multi_seqs.txt`, and return them
@@ -103,15 +105,15 @@ def avg_lysine_stats(filename="multi_seqs.txt") -> Tuple[float, float]:
         return median_lysine, mean_lysine    
         
   
-import matplotlib.pyplot as py
-import seaborn as sb
-import pandas as pd
+
 def plot_lysine_stats(filename: str = "multi_seqs.txt") -> None:
     """Question 5
         Wrte a function that plot the distribution of lysine counts, in the sequences from file `multi_seqs.txt`.
 
         Example use: plot_lysine_stats()
         Example output:  <plot of the lysine count distribution>
+        Required packages, matplotlib.pyplot, seaborn, pandas
+       
     """
     # Complete the function body below to answer question 5
     with open(filename) as f:
