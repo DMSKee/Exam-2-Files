@@ -46,6 +46,7 @@ def top_lysine_stats(filename: str = "multi_seqs.txt") -> tuple[float, str]:
     """
     # Open the file and read the lines and strip the spaces
     with open(filename) as f:
+        # Return list of each line of the file as a string
         lines = f.readlines()
         lines = [line.strip() for line in lines]
 
@@ -79,17 +80,22 @@ def avg_lysine_stats(filename="multi_seqs.txt") -> Tuple[float, float]:
     with open(filename) as f:
         lines = f.readlines()
         lines = [line.strip() for line in lines]
-
+        # Create a list for lysine counts
         lysine_counts = []
         for line in lines:
-            lysine_counts = line.count("K")
-            mean_lysine = sum(lysine_counts) / len(lysine_counts)
-            median_lysine = lysine_counts[len(lysine_counts) // 2]
-
-    return mean_lysine, median_lysine
+            lysine_count = line.count("K")
+            # Add the counts to the list
+            lysine_counts.append(lysine_count)
+            # Calculate the mean lysine count
+            if lines:
+                mean_lysine = sum(lysine_counts) / len(lysine_counts)
+                # Calculate the median lysine count 
+                median_lysine = lysine_counts[len(lysine_counts) // 2]
+        return median_lysine, mean_lysine
+        
            
   
-    return
+  
 
 def plot_lysine_stats(filename: str = "multi_seqs.txt") -> None:
     """Question 5
