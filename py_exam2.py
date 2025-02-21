@@ -67,7 +67,8 @@ def top_lysine_stats(filename: str = "multi_seqs.txt") -> tuple[float, str]:
     return max_percent, sequence
 
 
-
+import numpy as np
+from statistics import median
 
 def avg_lysine_stats(filename="multi_seqs.txt") -> Tuple[float, float]:
     """Question 4
@@ -77,6 +78,7 @@ def avg_lysine_stats(filename="multi_seqs.txt") -> Tuple[float, float]:
         Example output:  (4.390243902439025, 4.0)
     """
     # Complete the function body below to answer question 4
+
     with open(filename) as f:
         lines = f.readlines()
         lines = [line.strip() for line in lines]
@@ -90,8 +92,10 @@ def avg_lysine_stats(filename="multi_seqs.txt") -> Tuple[float, float]:
             if lines:
                 mean_lysine = sum(lysine_counts) / len(lysine_counts)
                 # Calculate the median lysine count 
-                median_lysine = lysine_counts[len(lysine_counts) // 2]
-        return median_lysine, mean_lysine
+                lysine_counts.sort()
+                median_lysine = median(lysine_counts)
+
+        return median_lysine, mean_lysine    
         
            
   
