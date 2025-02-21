@@ -164,51 +164,30 @@ So for this DNA sequence, the peptide sequence `GSMSV` should be returned.
         Example use: translate_dna()
         Example output:  ['YTSRRSPSSVGF', ...]
     """
-    # Complete the function body below to answer question 6
-    # Define the codons
-    codon = {'TTT': 'F', 'TCT': 'S', 'TAT': 'Y', 'TGT': 'C', 'TTC': 'F', 'TCC': 'S', 'TAC': 'Y', 'TGC': 'C', 'TTA': 'L',
-                 'TCA': 'S', 'TAA': '*', 'TGA': '*', 'TTG': 'L', 'TCG': 'S', 'TAG': '*', 'TGG': 'W', 'CTT': 'L',
-                 'CCT': 'P',
-                 'CAT': 'H', 'CGT': 'R', 'CTC': 'L', 'CCC': 'P', 'CAC': 'H', 'CGC': 'R', 'CTA': 'L', 'CCA': 'P',
-                 'CAA': 'Q',
-                 'CGA': 'R', 'CTG': 'L', 'CCG': 'P', 'CAG': 'Q', 'CGG': 'R', 'ATT': 'I', 'ACT': 'T', 'AAT': 'N',
-                 'AGT': 'S',
-                 'ATC': 'I', 'ACC': 'T', 'AAC': 'N', 'AGC': 'S', 'ATA': 'I', 'ACA': 'T', 'AAA': 'K', 'AGA': 'R',
-                 'ATG': 'M',
-                 'ACG': 'T', 'AAG': 'K', 'AGG': 'R', 'GTT': 'V', 'GCT': 'A', 'GAT': 'D', 'GGT': 'G', 'GTC': 'V',
-                 'GCC': 'A',
-                 'GAC': 'D', 'GGC': 'G', 'GTA': 'V', 'GCA': 'A', 'GAA': 'E', 'GGA': 'G', 'GTG': 'V', 'GCG': 'A',
-                 'GAG': 'E',
-                 'GGG': 'G'}
-    # Read the codons file and store the codons in a dictionary
-    startcodon = 0
-    length = len(sequence)
-    startcodon = sequence.find('ATG', startcodon)
-    codon_list = [sequence[i:i+3] for i in range(startcodon+3, length-3, 3)]
-
-  
-
-
-
-"""
-    with open(codons_fname) as f:
+    
+# Define codon and aa dictionary
+# * is used for stop codon
+    codon_table = {'TTT': 'F', 'TCT': 'S', 'TAT': 'Y', 'TGT': 'C', 'TTC': 'F', 'TCC': 'S', 'TAC': 'Y', 'TGC': 'C',
+            'TTA': 'L', 'TCA': 'S', 'TAA': '*', 'TGA': '*', 'TTG': 'L', 'TCG': 'S', 'TAG': '*', 'TGG': 'W',
+            'CTT': 'L', 'CCT': 'P', 'CAT': 'H', 'CGT': 'R', 'CTC': 'L', 'CCC': 'P', 'CAC': 'H', 'CGC': 'R', 
+            'CTA': 'L', 'CCA': 'P', 'CAA': 'Q', 'CGA': 'R', 'CTG': 'L', 'CCG': 'P', 'CAG': 'Q', 'CGG': 'R', 
+            'ATT': 'I', 'ACT': 'T', 'AAT': 'N', 'AGT': 'S', 'ATC': 'I', 'ACC': 'T', 'AAC': 'N', 'AGC': 'S', 
+            'ATA': 'I', 'ACA': 'T', 'AAA': 'K', 'AGA': 'R', 'ATG': 'M','ACG': 'T', 'AAG': 'K', 'AGG': 'R', 
+            'GTT': 'V', 'GCT': 'A', 'GAT': 'D', 'GGT': 'G', 'GTC': 'V','GCC': 'A', 'GAC': 'D', 'GGC': 'G', 
+            'GTA': 'V', 'GCA': 'A', 'GAA': 'E', 'GGA': 'G', 'GTG': 'V', 'GCG': 'A','GAG': 'E', 'GGG': 'G'}
+    
+# Read the codons file and store the codons in a dictionary
+    protein_sequence = []
+    with open(filename) as f:
         lines = f.readlines()
-        lines = [line.strip() for line in lines]
-        codons = {}
-        for line in lines:
-            codon, aa = line.split()
-            codons[codon] = aa
-    # Define start and stop codons
-    start_codon = 'ATG'
-    stop_codons = ['TAA', 'TAG', 'TGA']
-    # Read the DNA file and store the DNA sequence
-    with open(dna_fname) as f:
-        dna = f.read().strip()
-    # Create a list to store the protein sequences
-    protein_sequences = []
-    # Iterate through the DNA sequence, finding the start codon
-
-    """
+        for i in range(0, len(lines),3):
+            codon = lines[i:i+3]
+            aa = codon_table[codon]
+            # check if it's a stop codon
+            if aa == "*":
+                break    
+            else:
+                protein_sequence.append(aa)
 
 
 
